@@ -21,7 +21,7 @@ const fetchCountries = createAsyncThunk<
     { rejectValue: string }
 >('countries/fetchCountries', async (_, { rejectWithValue }) => {
     try {
-        return countryAPI.getAll();
+        return await countryAPI.getAll();
     } catch (error) {
         const axiosError = error as AxiosError;
         return rejectWithValue(axiosError.message);
@@ -42,8 +42,10 @@ const countriesSlice = createSlice({
             state.countries = payload;
         });
         builder.addCase(fetchCountries.rejected, (state, { payload }) => {
-            state.isLoading = false;
-            state.error = payload as string;
+            if (payload) {
+                state.isLoading = false;
+                state.error = payload;
+            }
         });
     },
 });
