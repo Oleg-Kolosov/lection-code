@@ -2,7 +2,7 @@ import axios from 'axios';
 import { ICountry } from '../types/types';
 
 enum Endpoint {
-    ALL = 'all!',
+    ALL = 'all',
 }
 
 class CountryAPI {

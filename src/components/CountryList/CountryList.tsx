@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { fetchCountries } from '../store/feautures/countriesSlice';
-import { useAppDispatch, useAppSelector } from '../store/hooks/hooks';
-import { getCountries } from '../store/selectors/countrySelectors';
+import { fetchCountries } from '../../store/feautures/countriesSlice';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
+import { getCountries } from '../../store/selectors/countrySelectors';
 
 export const CountryList = () => {
     const dispatch = useAppDispatch();
