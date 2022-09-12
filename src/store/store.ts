@@ -1,10 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit';
-import countriesReducer from './feautures/countriesSlice';
+import { configureStore } from "@reduxjs/toolkit";
+
+import countriesReducer from "./feautures/countriesSlice";
 
 export const store = configureStore({
-    reducer: {
-        countries: countriesReducer,
-    },
+  reducer: {
+    countries: countriesReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
