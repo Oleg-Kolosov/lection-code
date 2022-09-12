@@ -3,6 +3,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+
 import { getFirebaseMessage } from "../../utils/firebaseErrors";
 
 type SignUpValues = {

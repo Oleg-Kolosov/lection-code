@@ -31,9 +31,6 @@
     "eject": "react-scripts eject",
     "lint": "eslint -c .eslintrc --ext .ts,.tsx ."
   },
-  "pre-commit": [
-    "lint"
-  ],
   "browserslist": {
     "production": [
       ">0.2%",
