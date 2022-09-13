@@ -3,10 +3,9 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { getFirebaseMessage } from "utils";
 
-import { getFirebaseMessage } from "../../utils/firebaseErrors";
-
-type SignUpValues = {
+export type SignUpFormValues = {
   email: string;
   password: string;
 };
@@ -21,14 +20,9 @@ export const FormSignUp = () => {
     reset,
     formState: { errors },
     control,
-  } = useForm<SignUpValues>({
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
+  } = useForm<SignUpFormValues>();
 
-  const onSubmit: SubmitHandler<SignUpValues> = ({ email, password }) => {
+  const onSubmit: SubmitHandler<SignUpFormValues> = ({ email, password }) => {
     setIsLoading(true);
     setErrorMessage(null);
     const auth = getAuth();
@@ -51,16 +45,24 @@ export const FormSignUp = () => {
       className="d-flex flex-column gap-3 p-3 rounded shadow-lg w-100"
       style={{ maxWidth: 400 }}
     >
-      <label>
-        Email:
-        <FormInput name="email" control={control} />
-      </label>
+      <FormInput
+        name="email"
+        control={control}
+        label="Email"
+        type="text"
+        validationFieldType="email"
+      />
       {errors.email && <p className="text-danger">{errors.email.message}</p>}
-      <label>
-        Password:
-        <FormInput name="password" control={control} />
-      </label>
+
+      <FormInput
+        name="password"
+        control={control}
+        label="Password"
+        type="password"
+        validationFieldType="password"
+      />
       {errors.password && <p className="text-danger">{errors.password.message}</p>}
+
       <p>
         Already have an account? <Link to="/sign-in">Sign In</Link>
       </p>

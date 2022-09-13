@@ -1,11 +1,11 @@
+import { FormInput } from "components";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { getFirebaseMessage } from "utils";
 
-import { getFirebaseMessage } from "../../utils/firebaseErrors";
-
-type SignInValues = {
+export type SignInFormValues = {
   email: string;
   password: string;
 };
@@ -16,18 +16,18 @@ export const FormSignIn = () => {
   const navigate = useNavigate();
 
   const {
-    register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<SignInValues>();
+    control,
+  } = useForm<SignInFormValues>();
 
-  const onSubmit: SubmitHandler<SignInValues> = ({ email, password }) => {
+  const onSubmit: SubmitHandler<SignInFormValues> = ({ email, password }) => {
     setIsLoading(true);
     setErrorMessage(null);
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then((_) => {
         navigate("/");
       })
       .catch((err) => {
@@ -45,32 +45,24 @@ export const FormSignIn = () => {
       className="d-flex flex-column gap-3 p-3 rounded shadow-lg w-100"
       style={{ maxWidth: 400 }}
     >
-      <label>
-        Email:
-        <input
-          type="text"
-          className="form-control"
-          {...register("email", {
-            required: "Email is requared",
-          })}
-        />
-      </label>
+      <FormInput
+        name="email"
+        control={control}
+        label="Email"
+        type="text"
+        validationFieldType="email"
+      />
       {errors.email && <p className="text-danger">{errors.email.message}</p>}
-      <label>
-        Password:
-        <input
-          type="password"
-          className="form-control"
-          {...register("password", {
-            required: "Password is requared",
-            minLength: {
-              value: 6,
-              message: "Password must contain six symbols",
-            },
-          })}
-        />
-      </label>
+
+      <FormInput
+        name="password"
+        control={control}
+        label="Password"
+        type="password"
+        validationFieldType="password"
+      />
       {errors.password && <p className="text-danger">{errors.password.message}</p>}
+
       <p>
         Dont have an account? <Link to="/sign-up">Sign Up</Link>
       </p>
