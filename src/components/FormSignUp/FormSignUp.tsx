@@ -67,7 +67,10 @@ export const FormSignUp = () => {
         Already have an account? <Link to="/sign-in">Sign In</Link>
       </p>
       {errorMessage && <p className="text-danger font-bold">{errorMessage}</p>}
-      <button type="submit" className="btn btn-primary">
+      <button
+        type="submit"
+        className="btn btn-primary"
+      >
         Sign Up{" "}
         {isLoading && (
           <div className="spinner-border text-white">

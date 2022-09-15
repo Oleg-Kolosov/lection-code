@@ -7,22 +7,34 @@ export const Header = () => {
       <div className="container-fluid">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link className="nav-link" to="/">
+            <Link
+              className="nav-link"
+              to="/"
+            >
               Home
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/favorites">
+            <Link
+              className="nav-link"
+              to="/favorites"
+            >
               Favorites
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/sign-in">
+            <Link
+              className="nav-link"
+              to="/sign-in"
+            >
               Sign In
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/sign-up">
+            <Link
+              className="nav-link"
+              to="/sign-up"
+            >
               Sign Up
             </Link>
           </li>

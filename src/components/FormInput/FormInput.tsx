@@ -41,7 +41,14 @@ export const FormInput = ({ name, control, label, type, validationFieldType }: I
         control={control}
         rules={validateRules[validationFieldType]}
         render={({ field: { onChange, value } }) => {
-          return <input type={type} value={value} onChange={onChange} className="form-control" />;
+          return (
+            <input
+              type={type}
+              value={value}
+              onChange={onChange}
+              className="form-control"
+            />
+          );
         }}
       />
     </label>
