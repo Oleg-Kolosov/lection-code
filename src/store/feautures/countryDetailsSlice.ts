@@ -9,13 +9,13 @@ export const fetchCountryByDetails = createAsyncThunk<ICountryDetails[], string>
   },
 );
 
-interface IDetailsCountry {
+interface DetailsCountryState {
   isLoading: boolean;
   error: null;
-  details: ICountryDetails[] | null;
+  details: ICountryDetails | null;
 }
 
-const initialState: IDetailsCountry = {
+const initialState: DetailsCountryState = {
   isLoading: false,
   error: null,
   details: null,
@@ -32,7 +32,7 @@ const countryDetailsSlice = createSlice({
     });
     builder.addCase(fetchCountryByDetails.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-      state.details = payload;
+      state.details = payload[0];
     });
     builder.addCase(fetchCountryByDetails.rejected, (state) => {
       state.isLoading = false;

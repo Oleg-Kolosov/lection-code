@@ -20,12 +20,12 @@ export const HomePage = () => {
     return <h1>{error}</h1>;
   }
   return (
-    <div className="d-flex flex-wrap gap-3 justify-content-around p-3">
+    <div className="d-flex flex-wrap gap-3 justify-content-start p-3">
       {countries.map((country) => {
         return (
           <div
-            className="p-3 shadow-lg rounded-2"
-            style={{ width: 300, height: 350 }}
+            className="p-3 shadow rounded-2"
+            style={{ width: 300, height: 300 }}
             key={country.name.common}
           >
             <Link
@@ -34,9 +34,20 @@ export const HomePage = () => {
             >
               <img src={country.flags.svg} alt={country.name.common} width="100%" height="150" />
               <h4 className="text-dark flex-grow-1">Name: {country.name.common}</h4>
-              <p className="text-dark fw-bold">Region: {country.region}</p>
-              <p className="text-dark">Area: {country.area}</p>
-              <p className="text-dark">Population: {country.population}</p>
+              <div className="d-flex justify-content-between">
+                <p className="text-dark fw-bold">
+                  <span className="badge bg-info">Region:</span> {country.region}
+                </p>
+                <button
+                  className="btn btn-light shadow"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    alert("ok");
+                  }}
+                >
+                  ❤️
+                </button>
+              </div>
             </Link>
           </div>
         );
