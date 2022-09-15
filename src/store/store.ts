@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import countriesReducer from "./feautures/countriesSlice";
+import countryDetailsReducer from "./feautures/countryDetailsSlice";
 
 export const store = configureStore({
   reducer: {
     countries: countriesReducer,
+    countryDetails: countryDetailsReducer,
   },
 });
 

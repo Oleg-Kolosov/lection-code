@@ -1,3 +1,4 @@
+import { DetailsCountryPage } from "pages/DetailsCountryPage";
 import { Route, Routes } from "react-router-dom";
 
 import { MainTemplate, RequareAuth } from "./components";
@@ -11,6 +12,7 @@ export const App = () => {
     <Routes>
       <Route element={<MainTemplate />}>
         <Route path="/" element={<HomePage />} />
+        <Route path="/countries/:name" element={<DetailsCountryPage />} />
         <Route element={<RequareAuth />}>
           <Route path="/favorites" element={<FavoritesPage />} />
         </Route>

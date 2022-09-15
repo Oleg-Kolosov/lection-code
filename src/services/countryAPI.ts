@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { ICountry } from "../types/types";
+import { ICountry, ICountryDetails } from "../types/types";
 
 enum Endpoint {
   ALL = "all",
@@ -19,6 +19,17 @@ class CountryAPI {
     };
 
     const { data } = await this.API.get<ICountry[]>(Endpoint.ALL, {
+      params,
+    });
+
+    return data;
+  }
+
+  public async getDetailsByName(name: string) {
+    const params = {
+      fields: ["name", "area", "population", "flags", "region", "subregion"].join(","),
+    };
+    const { data } = await this.API.get<ICountryDetails[]>(`name/${name}?fullText=true`, {
       params,
     });
 
