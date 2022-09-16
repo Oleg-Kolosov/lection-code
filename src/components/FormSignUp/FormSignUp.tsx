@@ -33,10 +33,10 @@ const validateRules = {
 };
 
 interface IProps {
-  setIOpen: (value: boolean) => void;
+  toggleModal: (value: boolean) => void;
 }
 
-export const FormSignUp = ({ setIOpen }: IProps) => {
+export const FormSignUp = ({ toggleModal }: IProps) => {
   const { isPendingAuth, error } = useAppSelector(getUserInfo);
   const dispatch = useAppDispatch();
 
@@ -52,7 +52,7 @@ export const FormSignUp = ({ setIOpen }: IProps) => {
   const onSubmit: SubmitHandler<SignUpFormValues> = (userInfo) => {
     dispatch(fetchSignInUser(userInfo))
       .then(() => {
-        setIOpen(true);
+        toggleModal(true);
       })
       .finally(() => {
         reset();

@@ -1,12 +1,11 @@
 import { Portal, PortalTarget } from "components/Portal/Portal";
 
 interface IProps {
-  isOpen: boolean;
-  handleModal: () => void;
+  toggleModal: (value: boolean) => void;
 }
 
-export const Modal = ({ isOpen, handleModal }: IProps) => {
-  return isOpen ? (
+export const Modal = ({ toggleModal }: IProps) => {
+  return (
     <Portal target={PortalTarget.MODAL}>
       <div
         className="modal d-flex"
@@ -21,7 +20,7 @@ export const Modal = ({ isOpen, handleModal }: IProps) => {
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={handleModal}
+                onClick={() => toggleModal(false)}
               >
                 Got it!
               </button>
@@ -30,5 +29,5 @@ export const Modal = ({ isOpen, handleModal }: IProps) => {
         </div>
       </div>
     </Portal>
-  ) : null;
+  );
 };
