@@ -4,13 +4,13 @@ import { AxiosError } from "axios";
 import { countryAPI } from "../../services/countryAPI";
 import { ICountry } from "../../types/types";
 
-interface CountriesState {
+interface ICountriesState {
   countries: ICountry[];
   isLoading: boolean;
   error: null | string;
 }
 
-const initialState: CountriesState = {
+const initialState: ICountriesState = {
   countries: [],
   isLoading: false,
   error: null,
@@ -23,6 +23,7 @@ const fetchCountries = createAsyncThunk<ICountry[], undefined, { rejectValue: st
       return await countryAPI.getAll();
     } catch (error) {
       const axiosError = error as AxiosError;
+
       return rejectWithValue(axiosError.message);
     }
   },

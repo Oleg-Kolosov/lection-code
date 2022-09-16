@@ -38,6 +38,14 @@ export const Header = () => {
               Sign Up
             </Link>
           </li>
+          <li className="nav-item">
+            <Link
+              className="nav-link"
+              to="/account"
+            >
+              Account
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>

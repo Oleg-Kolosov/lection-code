@@ -9,13 +9,13 @@ export const fetchCountryByDetails = createAsyncThunk<ICountryDetails[], string>
   },
 );
 
-interface DetailsCountryState {
+interface IDetailsCountryState {
   isLoading: boolean;
   error: null;
   details: ICountryDetails | null;
 }
 
-const initialState: DetailsCountryState = {
+const initialState: IDetailsCountryState = {
   isLoading: false,
   error: null,
   details: null,

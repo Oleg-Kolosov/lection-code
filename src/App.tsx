@@ -1,3 +1,4 @@
+import { Account } from "pages/Account";
 import { DetailsCountryPage } from "pages/DetailsCountryPage";
 import { Route, Routes } from "react-router-dom";
 
@@ -11,13 +12,33 @@ export const App = () => {
   return (
     <Routes>
       <Route element={<MainTemplate />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/countries/:name" element={<DetailsCountryPage />} />
+        <Route
+          path="/"
+          element={<HomePage />}
+        />
+        <Route
+          path="/countries/:name"
+          element={<DetailsCountryPage />}
+        />
+        <Route
+          path="/sign-in"
+          element={<SignInPage />}
+        />
+        <Route
+          path="/sign-up"
+          element={<SignUpPage />}
+        />
+
         <Route element={<RequareAuth />}>
-          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route
+            path="/favorites"
+            element={<FavoritesPage />}
+          />
+          <Route
+            path="/account"
+            element={<Account />}
+          />
         </Route>
-        <Route path="/sign-in" element={<SignInPage />} />
-        <Route path="/sign-up" element={<SignUpPage />} />
       </Route>
     </Routes>
   );

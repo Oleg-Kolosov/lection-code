@@ -1,7 +1,7 @@
 import { FormInput } from "components";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 import { getFirebaseMessage } from "utils";
 
@@ -45,22 +45,39 @@ export const FormSignIn = () => {
       className="d-flex flex-column gap-3 p-3 rounded shadow-lg w-100"
       style={{ maxWidth: 400 }}
     >
-      <FormInput
-        name="email"
-        control={control}
-        label="Email"
-        type="text"
-        validationFieldType="email"
-      />
+      <label>
+        Email:
+        <Controller
+          name="email"
+          control={control}
+          render={({ field: { value, onChange } }) => {
+            return (
+              <FormInput
+                value={value}
+                onChange={onChange}
+                type="text"
+              />
+            );
+          }}
+        />
+      </label>
       {errors.email && <p className="text-danger">{errors.email.message}</p>}
-
-      <FormInput
-        name="password"
-        control={control}
-        label="Password"
-        type="password"
-        validationFieldType="password"
-      />
+      <label>
+        Email:
+        <Controller
+          name="password"
+          control={control}
+          render={({ field: { value, onChange } }) => {
+            return (
+              <FormInput
+                value={value}
+                onChange={onChange}
+                type="password"
+              />
+            );
+          }}
+        />
+      </label>
       {errors.password && <p className="text-danger">{errors.password.message}</p>}
 
       <p>

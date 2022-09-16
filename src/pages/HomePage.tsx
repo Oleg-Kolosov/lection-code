@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { fetchCountries } from "store/feautures/countriesSlice";
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
+import { Link } from "react-router-dom";
 import { getCountries } from "store/selectors/countrySelectors";
 
 export const HomePage = () => {
@@ -19,6 +19,7 @@ export const HomePage = () => {
   if (error) {
     return <h1>{error}</h1>;
   }
+
   return (
     <div className="d-flex flex-wrap gap-3 justify-content-start p-3">
       {countries.map((country) => {
