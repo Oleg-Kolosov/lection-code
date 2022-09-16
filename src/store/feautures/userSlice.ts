@@ -46,9 +46,11 @@ const userSlice = createSlice({
     builder.addCase(fetchSignInUser.pending, (state) => {
       state.isPendingAuth = true;
       state.isAuth = false;
+      state.error = null;
     });
     builder.addCase(fetchSignInUser.fulfilled, (state, { payload }) => {
       state.isPendingAuth = false;
+      state.error = null;
       state.email = payload.userEmail;
       state.creationTime = payload.creationTime;
       state.isAuth = true;

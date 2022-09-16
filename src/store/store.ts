@@ -13,17 +13,19 @@ import {
 import countriesReducer from "./feautures/countriesSlice";
 import countryDetailsReducer from "./feautures/countryDetailsSlice";
 import userReducer from "./feautures/userSlice";
+import favoritesReducer from "./feautures/favoritesSlice";
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["user"],
+  whitelist: ["favorites", "user"],
 };
 
 const rootReducer = combineReducers({
   countries: countriesReducer,
   countryDetails: countryDetailsReducer,
   user: userReducer,
+  favorites: favoritesReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { Link } from "react-router-dom";
 import { getCountries } from "store/selectors/countrySelectors";
+import { addToFavotires } from "store/feautures/favoritesSlice";
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
@@ -48,7 +49,7 @@ export const HomePage = () => {
                   className="btn btn-light shadow"
                   onClick={(e) => {
                     e.preventDefault();
-                    alert("ok");
+                    dispatch(addToFavotires(country));
                   }}
                 >
                   ❤️

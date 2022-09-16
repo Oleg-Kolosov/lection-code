@@ -7,12 +7,12 @@ export enum PortalTarget {
 }
 
 interface IPortalProps {
-  children: ReactNode;
   target: PortalTarget;
+  children: ReactNode;
 }
 
-export const Portal = ({ children, target }: IPortalProps) => {
-  const root = document.getElementById(target);
+export const Portal = ({ target, children }: IPortalProps) => {
+  const root = document.getElementById(target) as HTMLElement;
 
-  return root ? ReactDOM.createPortal(children, root) : null;
+  return ReactDOM.createPortal(children, root);
 };

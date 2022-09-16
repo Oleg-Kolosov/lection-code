@@ -13,7 +13,7 @@ export const DetailsCountryPage = () => {
     population,
     area,
     region,
-    flags: { svg } = {},
+    flags: { svg: url } = {},
     name: { common: countryName } = {},
   } = details || ({} as ICountryDetails);
 
@@ -33,7 +33,7 @@ export const DetailsCountryPage = () => {
     <div className="p-4 d-flex flex-column gap-3">
       <h1>{countryName}</h1>
       <img
-        src={svg}
+        src={url}
         alt=""
         width="300"
         height="200"
